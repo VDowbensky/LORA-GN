@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [LORA_GN.PrjPcb]
+   Generated File[LoRaGN.TXT]
+   Generated File[LoRaGN.LDP]
+   Generated File[LoRaGN.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 13:56:58 On 15.08.2025
