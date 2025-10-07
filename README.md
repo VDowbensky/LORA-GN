@@ -1,6 +1,6 @@
 # LORA-GN
 Simple signal generator and RF power meter for LoRa devices.
-Based on ASR6601 SoC.
+### Based on ASR6601 SoC.
 
 ## Features:
 ### Frequency range: 100...600 MHz (low band), 500...1100 MHz (middle band), 800...1400 MHz (high band)
