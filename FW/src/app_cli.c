@@ -120,7 +120,7 @@ CommandEntry_t commands[] =
 		COMMAND_ENTRY("GET_RFLEVEL", "", cli_getrflevel, "Get RF level in dBm"),
     COMMAND_ENTRY("SET_RFLEVEL", "f", cli_setrflevel, "Set RF level in dBm"),
 		COMMAND_ENTRY("GET_ATT", "", cli_getatt, "Get attenuation value in dB"),
-    COMMAND_ENTRY("SET_ATT", "wf", cli_setatt, "Get attenuation value in dB"),
+    COMMAND_ENTRY("SET_ATT", "wf", cli_setatt, "Set attenuation value in dB"),
 		
     COMMAND_ENTRY("GET_XOTRIM", "", cli_getxotrim, "Get XO trim value"),
     COMMAND_ENTRY("SET_XOTRIM", "w", cli_setxotrim, "Set XO trim value, 0...94"),
@@ -395,7 +395,7 @@ void cli_setatt(int argc, char **argv)
 	if(val > 31.5) val = 31.5;
 	atten[att] = (uint8_t)(val * 2);
 	atten_set(att,atten[att]);
-	printf("GET_ATT: %.1fdB\r\n",((float)atten[att]) / 2);
+	printf("SET_ATT: %d,%.1fdB\r\n",att,((float)atten[att]) / 2);
 }
 
 void cli_getxotrim(int argc, char **argv)
