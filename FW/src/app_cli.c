@@ -2,7 +2,7 @@
 #include "app_cli.h"
 #include "bsp.h"
 #include "radio_proc.h"
-#include "adc.h"
+//#include "adc.h"
 #include "flash.h"
 #include "atten.h"
 #include "txlevel.h"
@@ -88,7 +88,6 @@ void cli_stoprxcount(int argc, char **argv);
 void cli_getrxcount(int argc, char **argv);
 
 //device dependent
-void cli_getvt(int argc, char **argv);
 
 //special tests
 void cli_sweeptx(int argc, char **argv);
@@ -159,9 +158,6 @@ CommandEntry_t commands[] =
     COMMAND_ENTRY("STOP_RXCOUNT", "", cli_stoprxcount, "Stop RX packet count"),
     COMMAND_ENTRY("GET_RXCOUNT", "", cli_getrxcount, "Get RX packet count"),
                         
-    //System health - device dependent
-    COMMAND_ENTRY("GET_VT", "", cli_getvt, "Get ADC data"),
-
     COMMAND_ENTRY("READ_REG", "w", cli_readreg, "Read register"),
     COMMAND_ENTRY("WRITE_REG", "ww", cli_writereg, "Write register"),
     COMMAND_ENTRY("DUMP_REGS", "ww", cli_dumpregs, "Dump registers (from...to"),
@@ -1078,11 +1074,6 @@ void cli_setrssioffset(int argc, char **argv)
   printf("SET_RSSIOFFSET: TODO\r\n");
 }
 
-//Device dependent commands
-void cli_getvt(int argc, char **argv)
-{
-  printf("GET_VT: T=%.3f,V=%.3f\r\n",T,Vcc);
-}
 
 void cli_readreg(int argc, char **argv)
 {

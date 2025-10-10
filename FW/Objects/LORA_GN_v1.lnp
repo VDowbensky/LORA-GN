@@ -33,7 +33,6 @@
 ".\objects\lorac.o"
 ".\objects\flash.o"
 ".\objects\ustimer.o"
-".\objects\adc.o"
 ".\objects\radio_proc.o"
 ".\objects\sx126x.o"
 ".\objects\sx126x_interface.o"

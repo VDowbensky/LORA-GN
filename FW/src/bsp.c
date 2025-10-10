@@ -2,7 +2,6 @@
 
 #include "gpio.h"
 #include "uart.h"
-#include "adc.h"
 #include "i2c.h"
 #include "lorac.h"
 #include "ustimer.h"
@@ -26,7 +25,7 @@ void init_power_clk(void)
 void init_peripherals(void)
 {
 	mygpio_init();
-	myadc_init();
+	//myadc_init();
 	RETARGET_SerialInit();
 	lorac_init();
 	ustimer_init();
@@ -45,14 +44,12 @@ void txled_off(void)
 
 void rxled_on(void)
 {
-	//gpio_write(RXLED_PORT, RXLED_PIN,GPIO_LEVEL_LOW);
-	gpio_init(RXLED_PORT, RXLED_PIN, GPIO_MODE_OUTPUT_OD_LOW);
+	gpio_write(RXLED_PORT, RXLED_PIN,GPIO_LEVEL_LOW);
 }
 
 void rxled_off(void)
 {
-	//gpio_write(RXLED_PORT, RXLED_PIN,GPIO_LEVEL_HIGH);
-	gpio_init(RXLED_PORT, RXLED_PIN, GPIO_MODE_OUTPUT_OD_HIZ);
+	gpio_write(RXLED_PORT, RXLED_PIN,GPIO_LEVEL_HIGH);
 }
 
 

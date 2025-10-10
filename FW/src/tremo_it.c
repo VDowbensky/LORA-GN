@@ -1,11 +1,6 @@
 #include "bsp.h"
 #include "tremo_it.h"
-#include "adc.h"
 #include "radio_proc.h"
-
-
-#define ADC_MS		10
-uint32_t adc_ticks = 0;
 
 
 /**
@@ -94,13 +89,6 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
-	adc_ticks++;
-	if(adc_ticks == ADC_MS)
-	{
-		adc_ticks = 0;
-		adc_start(true);
-	}
-	
 	if(master)
 	{
 	 tx_ticks++;

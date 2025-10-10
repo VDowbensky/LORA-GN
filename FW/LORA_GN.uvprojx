@@ -569,11 +569,6 @@
               <FileType>1</FileType>
               <FilePath>.\periph\ustimer.c</FilePath>
             </File>
-            <File>
-              <FileName>adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\periph\adc.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
