@@ -151,7 +151,7 @@ CommandEntry_t commands[] =
     COMMAND_ENTRY("FS_SET_CRCWH", "www", cli_fs_setcrcwhite, "Set FSK CRC/WH parameters"),
 
     //RF tests
-    COMMAND_ENTRY("START_TX", "www", cli_sendburst, "Start packet burst"),
+    COMMAND_ENTRY("TX", "www", cli_sendburst, "Start packet burst"),
     COMMAND_ENTRY("STOP_TX", "", cli_stopburst, "Stop packet burst"),
 
     COMMAND_ENTRY("TX_STREAM", "v", cli_txstream, "Start/stop TX stream"),
@@ -903,7 +903,7 @@ void cli_sendburst(int argc, char **argv)
   slaveID = ciGetUnsigned(argv[3]);
   if(inter_packet_delay < 100) inter_packet_delay = 100;
   radio_startburst();
-  printf("SEND_PACKET: %d,%d\r\n",txpacketcount,inter_packet_delay);
+  printf("TX: %d,%d\r\n",txpacketcount,inter_packet_delay);
 	//updatescreen();
 }
 
@@ -933,6 +933,7 @@ void cli_txstream(int argc, char **argv)
       
       SX126X_setopmode(SX126X_OPMODE_RX); //SX126X_SetRx(radioConfig.LoRaRxTimeout);
       printf("TX_STREAM: OFF\r\n");
+			txled_off();
       txmode = 0;
       break;
 
@@ -940,6 +941,7 @@ void cli_txstream(int argc, char **argv)
       prevopmode = opmode;
       SX126X_setopmode(SX126X_OPMODE_TXSTREAMCW);//SX126X_SetCW();
       printf("TX_STREAM: CW\r\n");
+			txled_on();
       txmode = 1;
       break;
 
@@ -947,6 +949,7 @@ void cli_txstream(int argc, char **argv)
       prevopmode = opmode;
       SX126X_setopmode(SX126X_OPMODE_TXSTREAMPRE);//SX126X_SetTxInfinitePreamble();
       printf("TX_STREAM: PREAMBLE\r\n");
+			txled_on();
       txmode = 2;
       break;
   }
@@ -972,6 +975,7 @@ void cli_sweeptx(int argc, char **argv)
       SX126X_setopmode(prevopmode);
 			currfreq = freq_save;
       RADIO_SetAbsoluteFrequency(currfreq);
+			txled_off();
       txmode = 0;
     }
     printf("SWEEP_TX: STOP\r\n");
@@ -994,6 +998,7 @@ void cli_sweeptx(int argc, char **argv)
       {
         SX126X_setopmode(SX126X_OPMODE_TXSTREAMCW);
 				txmode = 1;
+				txled_on();
         printf("TX_STREAM: CW\r\n");
       }
       else 
@@ -1033,6 +1038,7 @@ void cli_sweeprx(int argc, char **argv)
 			currfreq = freq_save;
 			RADIO_SetAbsoluteFrequency(currfreq);
 			ustimer_stop();
+			rxled_off();
 		}
     printf("SWEEP_RX: STOP\r\n");
   }
@@ -1042,6 +1048,7 @@ void cli_sweeprx(int argc, char **argv)
     RADIO_SetAbsoluteFrequency(startfreq);
 		ustimer_setinterval(sweeptimeus);
 		ustimer_start();
+		rxled_on();
     sweeprx = true;
   }
 }

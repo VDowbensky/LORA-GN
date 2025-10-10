@@ -45,12 +45,14 @@ void txled_off(void)
 
 void rxled_on(void)
 {
-	gpio_write(RXLED_PORT, RXLED_PIN,GPIO_LEVEL_LOW);
+	//gpio_write(RXLED_PORT, RXLED_PIN,GPIO_LEVEL_LOW);
+	gpio_init(RXLED_PORT, RXLED_PIN, GPIO_MODE_OUTPUT_OD_LOW);
 }
 
 void rxled_off(void)
 {
-	gpio_write(RXLED_PORT, RXLED_PIN,GPIO_LEVEL_HIGH);
+	//gpio_write(RXLED_PORT, RXLED_PIN,GPIO_LEVEL_HIGH);
+	gpio_init(RXLED_PORT, RXLED_PIN, GPIO_MODE_OUTPUT_OD_HIZ);
 }
 
 

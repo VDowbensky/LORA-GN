@@ -114,7 +114,7 @@ void SysTick_Handler(void)
      {
        tx_needed = false;
        master = false;
-       printf("SEND_PACKET: DONE\r\n");
+       printf("TX: DONE\r\n");
      }
    }
 	}

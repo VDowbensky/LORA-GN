@@ -33,7 +33,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>D:\RFprojects\zucker\OTHER\tremo_test_v2\chip\TREMO.SFR</SFDFile>
+          <SFDFile>D:\RFprojects\LORA-GN\FW\chip\TREMO.SFR</SFDFile>
           <bCustSvd>1</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
